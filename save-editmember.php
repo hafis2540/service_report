@@ -7,14 +7,14 @@ include("connection.php");  //ไฟล์เชื่อมต่อกับ d
 $ID_user = $_GET['ID_user'];
 
 //สร้างตัวแปรสำหรับรับค่าที่นำมาแก้ไขจากฟอร์ม
-	$ID_user = $_POST["ID_user"];
-	$name_las = $_POST["name_las"];
-    $nickname = $_POST["nickname"];
-    $position = $_POST["position"];
-    $mobilephone = $_POST["mobilephone"];
-    $level = $_POST["level"];
-	$username = $_POST["username"];
-	$password = $_POST["password"];	
+	// $ID_user = $_POST["ID_user"];
+	// $name_las = $_POST["name_las"];
+    // $nickname = $_POST["nickname"];
+    // $position = $_POST["position"];
+    // $mobilephone = $_POST["mobilephone"];
+    // $level = $_POST["level"];
+	// $username = $_POST["username"];
+	// $password = $_POST["password"];	
 	
 
 //ทำการปรับปรุงข้อมูลที่จะแก้ไขลงใน database 
