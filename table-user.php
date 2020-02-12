@@ -1,24 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php session_start();  
- include("connection.php");
 
- $query = " SELECT *
- FROM tb_problem as p
- INNER JOIN tb_project as pro ON p.ID_project = pro.ID_project
- INNER JOIN tb_user as u ON p.ID_user = u.ID_user
- INNER JOIN tb_job_type as j ON p.ID_type = j.ID_type
- ORDER BY p.ID_project asc " or die("Error:" . mysqli_error());
- $result = mysqli_query($con, $query);
 
-  $ID_user = $_SESSION['ID_user'];
-  $name_las = $_SESSION['name_las'];
-  $level = $_SESSION['level'];
-  if($level!='User'){
-    Header("Location: ../logout.php");  
-  }  
-?>
 <head>
 
   <meta charset="utf-8">
@@ -48,8 +32,11 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-  <?php include ('slidem-user.php');?>
+  <?php include ('slidem-admin.php');?>
+    <!-- End of Sidebar -->
 
+
+    <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
       <!-- Main Content -->
@@ -77,85 +64,79 @@
           </form>
 
           <!-- Topbar Navbar -->
-        
-
           <ul class="navbar-nav ml-auto">
 
-          <div class="topbar-divider d-none d-sm-block"></div>
+            <div class="topbar-divider d-none d-sm-block"></div>
 
-          <!-- Nav Item - User Information -->
-          <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              <span class="mr-2 d-none d-lg-inline text-gray-200 small"><?php echo $name_las; ?> ( <?php echo $level; ?> )</span>
-              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-            </a>
-            <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-              <!-- <a class="dropdown-item" href="#">
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-200 small"><?php echo $name_las; ?> ( <?php echo $level; ?> )</span>
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Profile
-              </a> -->
-              <!-- <a class="dropdown-item" href="#">
-                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                Settings
-              </a> -->
-              <!-- <a class="dropdown-item" href="#">
-                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                Activity Log
-              </a> -->
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                Logout
               </a>
-            </div>
-          </li>
-
-          </ul>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <!-- <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a> -->
+                <!-- <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a> -->
+                <!-- <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a> -->
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
 
           </ul>
 
         </nav>
         <!-- End of Topbar -->
+        <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+          
+
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">รายละเอียดการแจ้ง</h1>
-            <a href="add_problem.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> แจ้งปัญหา </a>
+            <h1 class="h3 mb-0 text-gray-800">MEMBER</h1>
+            <a href="add_member.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> เพิ่มข้อมูลสมาชิก </a>
           </div>
-                    <!-- DataTales Example -->
+          
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">ประวัติการแจ้งปัญหา</h6>
+              <h6 class="m-0 font-weight-bold text-primary">ข้อมูลสมาชิกทั้งหมด</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <!--ส่วนตารางการแจ้งปัญหา-->
-                    <?php include('showtable-problem.php');?>
-                </table>
-              </div>
+            
+          <?php include('showtable-problem.php');?>
+
+          </div>
             </div>
           </div>
 
         </div>
+          
+            </div>
         <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-          </div>
-        </div>
-      </footer>
+      
       <!-- End of Footer -->
 
     </div>
@@ -170,12 +151,11 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">คุณแน่ใจหรือไม่?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -198,13 +178,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

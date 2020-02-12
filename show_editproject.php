@@ -1,20 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php session_start();  
  include("connection.php");
 
-  $query = " select * from tb_project ";
-  $result = mysqli_query($con,$query);
+    $ID_user = $_SESSION['ID_user'];
+    $name_las = $_SESSION['name_las'];
+    $level = $_SESSION['level'];
+    if($level!='Admin'){
+      Header("Location: ../logout.php");  
+    }
 
-  $ID_user = $_SESSION['ID_user'];
-  $name_las = $_SESSION['name_las'];
-  $level = $_SESSION['level'];
-  if($level!='Admin'){
-    Header("Location: ../logout.php");  
 
-  }  
+
+    $ID_project = $_GET['GetID'];
+    $query = " select * from tb_project where ID_project='".$ID_project."'";
+    $result = mysqli_query($con,$query);
+
+    while($row=mysqli_fetch_assoc($result))
+    {
+        $ID_project = $row['ID_project'];
+        $code_project = $row['code_project'];
+        $name_project = $row['name_project'];
+        $office_name = $row['office_name'];
+    }
+   
+  
+
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
 
 <head>
 
@@ -54,7 +68,8 @@
         </div>
         <div class="sidebar-brand-text"> <?php echo $level; ?> <sup></sup></div>
       </a>
-      
+
+      <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
@@ -66,44 +81,50 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        <h6 align="center">สมาชิก</h6>
+      </div>
 
-<!-- Heading -->
-<div class="sidebar-heading">
-  <h6 align="center">สมาชิก</h6>
-</div>
+      <!-- ส่วนของ Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>สมาชิก</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="table.php">สมาชิกทั้งหมด</a>
+          </div>
+        </div>
+      </li>
+      
+      <hr class="sidebar-divider d-none d-md-block">
+      <div class="sidebar-heading">
+        <h6 align="center">โครงการ</h6>
+      </div>
 
-<!-- ส่วนของ Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-    aria-controls="collapseTwo">
-    <i class="fas fa-fw fa-cog"></i>
-    <span>สมาชิก</span>
-  </a>
-  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item" href="table.php">สมาชิกทั้งหมด</a>
-    </div>
-  </div>
-</li>
+      <!-- ส่วนของ Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+          aria-controls="collapsePages">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>โครงการ</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="project.php">โครงการทั้งหมด</a>
+          </div>
+        </div>
+      </li>
 
-<hr class="sidebar-divider d-none d-md-block">
-<div class="sidebar-heading">
-  <h6 align="center">โครงการ</h6>
-</div>
+      <!-- Nav Item - Utilities Collapse Menu -->
 
-<!-- ส่วนของ Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-    aria-controls="collapsePages">
-    <i class="fas fa-fw fa-cog"></i>
-    <span>โครงการ</span>
-  </a>
-  <div id="collapsePages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item" href="project.php">โครงการทั้งหมด</a>
-    </div>
-  </div>
-</li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -172,7 +193,8 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-200 small"><?php echo $name_las; ?> ( <?php echo $level; ?> )</span>
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>              </a>
+                <img class="img-profile rounded-circle" src="php-server/report/img/nack.jpg/60x60">
+              </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <!-- <a class="dropdown-item" href="#">
@@ -204,17 +226,50 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          
-
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">โครงการ</h1>
-            <a href="add-project.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> เพิ่มข้อมูลโครงการ </a>
-          </div>
-          
-         <?php include("showtable-project.php") ?>
+          <h1 class="h3 mb-4 text-gray-800">แก้ไขข้อมูลสมาชิก</h1>
+          <div class="card shadow mb-4">
+            
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <div class="form-group">
+          <form action="save_editproject.php?ID=<?php echo $ID_project ?>" method="post">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> รหัสโครงการ </b>
+      <input type="text" class="form-control form-control-user" id="exampleFirstName" name="code1" value="<?php echo $code_project ?>">
+    </div>
+    </div>
 
+
+    <div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> ชื่อโปรเจค </b>
+      <input type="text" class="form-control form-control-user" id="exampleFirstName" name="code2" value="<?php echo $name_project ?>">
+    </div>
+    </div>
+
+    <div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> ชื่อบริษัท โครงการ </b>
+      <input type="text" class="form-control form-control-user" id="exampleFirstName" name="code3" value="<?php echo $office_name ?>">
+    </div>
+    </div>
+
+    <button class="btn btn-primary" name="update">บันทึก</button>
+  </form>
+        </div>
         <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      
+      <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->

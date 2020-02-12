@@ -9,13 +9,13 @@
                       <th><center>ประเภทงาน</center></th>
                       <th><center>โครงการ</center></th>
                       <th><center>สถานะ</center></th>
-                      <th><center>เวลาการแจ้ง</center></th>
+                      <th><center>รายละเอียด</center></th>
                       <th><center>ลบ</center></th>
                     </tr>
                   </thead>
                 
-                  <?php
-              while($row=mysqli_fetch_assoc($result))
+                  <?php 
+                  while($row=mysqli_fetch_assoc($result))
                   {
                       $ID_problem = $row['ID_problem'];
                       $name_problem = $row['name_problem'];
@@ -33,7 +33,7 @@
                   <tbody>
                     <tr>
                                         <td><?php echo $ID_problem ?></td>
-                                        <td><a href="show-problem.php?GetID=<?php echo $ID_problem ?>"><?php echo $name_problem ?></a></td>
+                                        <td><?php echo $name_problem ?></td>
                                         <td><?php echo $name_las ?></td>
                                         <td><?php echo $mobilephone ?></td>
                                         <td><?php echo $name ?></td>

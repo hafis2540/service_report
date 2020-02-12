@@ -1,33 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php session_start();  
  include("connection.php");
 
-  $ID_user = $_SESSION['ID_user'];
-  $name_las = $_SESSION['name_las'];
-  $level = $_SESSION['level'];
-  if($level!='Admin'){
-    Header("Location: ../logout.php");  
-  } 
-  
-  if($_GET["ID_user"]==''){ 
-    echo "<script type='text/javascript'>"; 
-    echo "alert('Error Contact Admin !!');"; 
-    echo "window.location = 'showtable-member.php'; "; 
-    echo "</script>";
+    $ID_user = $_SESSION['ID_user'];
+    $name_las = $_SESSION['name_las'];
+    $level = $_SESSION['level'];
+    if($level!='Admin'){
+      Header("Location: ../logout.php");  
+    } 
+
+
+
+    $ID_user = $_GET['GetID'];
+    $query = " select * from tb_user where ID_user='".$ID_user."'";
+    $result = mysqli_query($con,$query);
+
+    while($row=mysqli_fetch_assoc($result))
+    {
+        $ID_user = $row['ID_user'];
+        $name_las = $row['name_las'];
+        $nickname = $row['nickname'];
+        $position = $row['position'];
+        $mobilephone = $row['mobilephone'];
+        $username = $row['username'];
+        $password = $row['password'];
     }
 
-$ID_user = $_GET['ID_user'];
-
-$ID_user = mysqli_real_escape_string($con,$_GET['ID_user']);
-
-$sql = "SELECT * FROM tb_user WHERE ID_user='$ID_user' ";
-$result = mysqli_query($con, $sql) or die ("Error in query: $sql " . mysqli_error());
-$row = mysqli_fetch_array($result);
-extract($row);
+ 
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
 
 <head>
 
@@ -191,7 +195,7 @@ extract($row);
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-200 small"><?php echo $name_las; ?> ( <?php echo $level; ?> )</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-200 small"></span>
                 <img class="img-profile rounded-circle" src="php-server/report/img/nack.jpg/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -226,20 +230,20 @@ extract($row);
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Admin Page</h1>
+          <h1 class="h3 mb-4 text-gray-800">แก้ไขข้อมูลสมาชิก</h1>
           <div class="card shadow mb-4">
             
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <div class="form-group">
-    <form action="save-editmember.php" method="POST" name="add" class="form-horizontal" id="add">
-    <div class="col-sm-1 text-left"> </div>
-    <div class="col-sm-4 text-left">
+
+        <form action="update-editmember.php?ID=<?php echo $ID_user ?>" method="post">
+            <div class="col-sm-1 text-left"> </div>
+            <div class="col-sm-4 text-left">
       <b> ชื่อ - นามสกุล </b>
 
-      <input type="text" name="ID_user" value="<?php echo $ID_user; ?>" disabled='disabled' />
-      <input  name="name_las" type="text" value="<?=$name_las;?>" required class="form-control"  placeholder=""    minlength="2" />
+      <input  name="name1" type="text" value="<?php echo $name_las ?>" class="form-control"  placeholder=""    minlength="2" />
     </div>
     </div>
 
@@ -248,7 +252,7 @@ extract($row);
     <div class="col-sm-1 text-left"> </div>
     <div class="col-sm-4 text-left">
       <b> ชื่อเล่น </b>
-      <input  name="nickname" type="text" value="<?=$nickname;?>" required class="form-control"  placeholder=""    minlength="2" />
+      <input  name="name2" type="text" value="<?php echo $nickname ?>" class="form-control"  placeholder=""    minlength="2" />
     </div>
     </div>
 
@@ -256,7 +260,7 @@ extract($row);
     <div class="col-sm-1 text-left"> </div>
     <div class="col-sm-4 text-left">
       <b> ตำแหน่ง </b>
-      <input  name="position" type="text" value="<?=$position;?>" required class="form-control"  placeholder=""    minlength="2" />
+      <input  name="name3" type="text" value="<?php echo $position ?>" class="form-control"  placeholder=""    minlength="2" />
     </div>
     </div>
 
@@ -264,7 +268,7 @@ extract($row);
     <div class="col-sm-1 text-left"> </div>
     <div class="col-sm-4 text-left">
       <b> เบอร์โทรศัพท์ </b>
-      <input  name="mobilephone" type="text" value="<?=$mobilephone;?>" required class="form-control"  placeholder=""    maxlength="10" />
+      <input  name="name4" type="text" value="<?php echo $mobilephone ?>" class="form-control"  placeholder=""    maxlength="10" />
     </div>
     </div>
 
@@ -272,7 +276,7 @@ extract($row);
     <div class="col-sm-1 text-left"> </div>
     <div class="col-sm-4 text-left">
       <b> ชื่อผู้ใช้งาน </b>
-      <input  name="username" type="text" value="<?=$username;?>" required class="form-control"  placeholder=""    minlength="2" />
+      <input  name="name5" type="text" value="<?php echo $username ?>" class="form-control"  placeholder=""    minlength="2" />
     </div>
     </div>
 
@@ -280,16 +284,16 @@ extract($row);
     <div class="col-sm-1 text-left"> </div>
     <div class="col-sm-4 text-left">
       <b> รหัสผ่าน 
-      <input  name="password" type="password" value="<?=$password;?>" required class="form-control"  placeholder=""    minlength="2" />
+      <input  name="name6" type="text" value="<?php echo $password ?>" class="form-control"  placeholder=""    minlength="2" />
     </div>
     </div>
 
             
-  <div class="form-group">
+  <!-- <div class="form-group">
     <div class="col-sm-1 text-left"> </div>
     <div class="col-sm-2 text-left">
       <b> สถานะ </b>
-      <select name="level" value="<?=$level;?>" class="form-control">
+      <select name="level" class="form-control">
         <option value="">-เลือกข้อมูล-</option>
         <option value="Admin">Admin</option>
         <option value="Supervisor">Supervisor</option>
@@ -297,12 +301,11 @@ extract($row);
         
       </select>
     </div>
-  </div>
+  </div> -->
 
 
-  <button type="submit" class="btn btn-primary btn-user btn-block">
-                      บันทึก
-                    </button>  
+  <button class="btn btn-primary" name="update">บันทึก</button>
+ 
   </form>
         </div>
         <!-- /.container-fluid -->

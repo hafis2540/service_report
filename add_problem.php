@@ -4,17 +4,17 @@
 <?php session_start();  
  include("connection.php");
 
-  $query = " select * from tb_project ";
-  $result = mysqli_query($con,$query);
-
   $ID_user = $_SESSION['ID_user'];
   $name_las = $_SESSION['name_las'];
   $level = $_SESSION['level'];
-  if($level!='Admin'){
+  if($level!='User'){
     Header("Location: ../logout.php");  
-
   }  
+
+
+          
 ?>
+
 
 <head>
 
@@ -54,7 +54,8 @@
         </div>
         <div class="sidebar-brand-text"> <?php echo $level; ?> <sup></sup></div>
       </a>
-      
+
+      <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
@@ -66,44 +67,50 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        <h6 align="center">สมาชิก</h6>
+      </div>
 
-<!-- Heading -->
-<div class="sidebar-heading">
-  <h6 align="center">สมาชิก</h6>
-</div>
+      <!-- ส่วนของ Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>สมาชิก</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="table.php">สมาชิกทั้งหมด</a>
+          </div>
+        </div>
+      </li>
+      
+      <hr class="sidebar-divider d-none d-md-block">
+      <div class="sidebar-heading">
+        <h6 align="center">โครงการ</h6>
+      </div>
 
-<!-- ส่วนของ Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-    aria-controls="collapseTwo">
-    <i class="fas fa-fw fa-cog"></i>
-    <span>สมาชิก</span>
-  </a>
-  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item" href="table.php">สมาชิกทั้งหมด</a>
-    </div>
-  </div>
-</li>
+      <!-- ส่วนของ Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+          aria-controls="collapsePages">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>โครงการ</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="project.php">โครงการทั้งหมด</a>
+          </div>
+        </div>
+      </li>
 
-<hr class="sidebar-divider d-none d-md-block">
-<div class="sidebar-heading">
-  <h6 align="center">โครงการ</h6>
-</div>
+      <!-- Nav Item - Utilities Collapse Menu -->
 
-<!-- ส่วนของ Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-    aria-controls="collapsePages">
-    <i class="fas fa-fw fa-cog"></i>
-    <span>โครงการ</span>
-  </a>
-  <div id="collapsePages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item" href="project.php">โครงการทั้งหมด</a>
-    </div>
-  </div>
-</li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -171,8 +178,9 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-200 small"><?php echo $name_las; ?> ( <?php echo $level; ?> )</span>
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>              </a>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">ฮาฟิส บินสาแล๊ะ</span>
+                <img class="img-profile rounded-circle" src="php-server/report/img/nack.jpg/60x60">
+              </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <!-- <a class="dropdown-item" href="#">
@@ -204,17 +212,158 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          
-
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">โครงการ</h1>
-            <a href="add-project.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> เพิ่มข้อมูลโครงการ </a>
-          </div>
-          
-         <?php include("showtable-project.php") ?>
+          <h1 class="h3 mb-4 text-gray-800">Admin Page</h1>
+          <div class="card shadow mb-4">
+            
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <div class="form-group">
+    <form action="add-problem.php" method="post" name="add" class="form-horizontal" id="add">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> ชื่อผุ้แจ้ง </b>
+      <input name="ID_user" value="<?=$_SESSION['ID_user']?>" hidden type="text" required class="form-control"  placeholder=""    minlength="2" disabled />
+      <input value="<?=$_SESSION['name_las']?>" type="text" required class="form-control"  placeholder=""    minlength="2" disabled />
+    </div>
+    </div>
 
+
+    <div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> เบอร์ติดต่อ </b>
+      <input  name="nickname" type="text" required class="form-control"  placeholder=""    minlength="2" />
+    </div>
+    </div>
+
+    <div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> เวลารับงาน </b>
+      <input  name="job_date" type="date" required class="form-control"  placeholder=""    minlength="2" />
+    </div>
+    </div>
+
+    <div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> เวลาดำเนินการ </b>
+      <input  name="job_proceed" type="date" required class="form-control"  placeholder=""    maxlength="10" />
+    </div>
+    </div>
+
+    <div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> สถานที่ </b>
+      <select name="ID_location" class="form-control">
+        <option value="">-เลือกข้อมูล-</option>
+        <option value="1">หนองแขม</option>
+        <option value="2">สายไหม</option>
+        <option value="3">รัชวิภา</option>
+        <option value="4">อ่อนนุช</option>
+      </select>
+    </div>
+  </div>
+
+    <div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> สถานี 
+      <input  name="station" type="text" required class="form-control"  placeholder=""    minlength="2" />
+    </div>
+    </div>
+
+
+    <div class="col-sm-4 text-left">
+      
+      <input  name="status" value="รอการตรวจสอบ" type="hidden" required class="form-control"  placeholder=""    minlength="2" />
+    </div>
+
+            
+  <div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> โครงการ </b>
+      <select name="ID_project" class="form-control">
+        <option value="">-เลือกข้อมูล-</option>
+        <option value="1">BOI-DMSMA61</option>
+        <option value="2">NS-YMSRTK</option>
+        
+      </select>
+    </div>
+  </div>
+  
+<div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+        <div class="col-sm-4 text-left">
+            <b> ประเภทงาน </b>
+                <select name="ID_type" class="form-control">
+                    <option value="">-เลือกข้อมูล-</option>
+                    <option value="1">Incident</option>
+                    <option value="2">Upgrade</option>
+                    <option value="3">Replace</option>
+                    <option value="4">PM</option>
+                    <option value="5">Project</option>
+                    <option value="6">Other</option>
+      </select>
+        </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> ปัญหา </b>
+      <input  name="name_problem" type="text" required class="form-control"  placeholder=""    minlength="2" />
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> อุปกรณ์ที่เสีย </b>
+      <input  name="equipment" type="text" required class="form-control"  placeholder=""    minlength="2" />
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <b> รหัสอุปกรณ์ </b>
+      <input  name="code_equipment" type="text" required class="form-control"  placeholder=""    minlength="2" />
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+      <label>
+        <input type="file" name="fileupload" id="fileupload"  required="required"/>    </div>
+      <label>
+
+</div>
+
+
+
+<div class="form-group">
+    <div class="col-sm-1"> </div>
+    <div class="col-sm-5">
+      <button type="submit" class="btn btn-primary" id="btn">บันทึก
+      </button>
+    </div>
+  </div>
+  </form>
+        </div>
         <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      
+      <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->

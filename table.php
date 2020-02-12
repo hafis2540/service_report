@@ -3,6 +3,9 @@
 
 <?php session_start();  
  include("connection.php");
+  $query = " select * from tb_user ";
+  $result = mysqli_query($con,$query);
+
 
   $ID_user = $_SESSION['ID_user'];
   $name_las = $_SESSION['name_las'];
@@ -10,6 +13,7 @@
   if($level!='Admin'){
     Header("Location: ../logout.php");  
   }  
+
 ?>
 
 <head>
@@ -81,7 +85,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-200 small"><?php echo $name_las; ?> ( <?php echo $level; ?> )</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-200 small"> ( <?php echo $level; ?> )</span>
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               </a>
               <!-- Dropdown - User Information -->
@@ -122,30 +126,21 @@
             <h1 class="h3 mb-0 text-gray-800">MEMBER</h1>
             <a href="add_member.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> เพิ่มข้อมูลสมาชิก </a>
           </div>
-          
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">ข้อมูลสมาชิกทั้งหมด</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-            
-          <?php include('showtable-member.php');?>
 
-          </div>
-            </div>
-          </div>
-
-        </div>
-          
-            </div>
+          <!-- DataTales Example -->
+          <?php include ('showtable-member.php');?>
         <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+          </div>
+        </div>
+      </footer>
       <!-- End of Footer -->
 
     </div>
