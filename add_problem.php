@@ -220,23 +220,24 @@
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <div class="form-group">
-    <form action="add-problem.php" method="post" name="add" class="form-horizontal" id="add">
+    <form action="add-problem.php" method="post" name="add" enctype="multipart/form-data" class="form-horizontal" id="add">
+    <div class="form-group">
     <div class="col-sm-1 text-left"> </div>
     <div class="col-sm-4 text-left">
-      <b> ชื่อผุ้แจ้ง </b>
-      <input name="ID_user" value="<?=$_SESSION['ID_user']?>" hidden type="text" required class="form-control"  placeholder=""    minlength="2" disabled />
-      <input value="<?=$_SESSION['name_las']?>" type="text" required class="form-control"  placeholder=""    minlength="2" disabled />
+      <b> ชื่อผู้แจ้ง </b>
+      <input type="hidden" value="<?php echo $ID_user; ?>" name="ID_user" required class="form-control"  placeholder=""    minlength="2" />
+      <input value="<?php echo $name_las; ?>" disable required class="form-control"  placeholder=""    minlength="2" />
     </div>
     </div>
 
 
-    <div class="form-group">
+    <!-- <div class="form-group">
     <div class="col-sm-1 text-left"> </div>
     <div class="col-sm-4 text-left">
       <b> เบอร์ติดต่อ </b>
       <input  name="nickname" type="text" required class="form-control"  placeholder=""    minlength="2" />
     </div>
-    </div>
+    </div> -->
 
     <div class="form-group">
     <div class="col-sm-1 text-left"> </div>
@@ -339,9 +340,8 @@
 <div class="form-group">
     <div class="col-sm-1 text-left"> </div>
     <div class="col-sm-4 text-left">
-      <label>
-        <input type="file" name="fileupload" id="fileupload"  required="required"/>    </div>
-      <label>
+
+          <input type="file" name="fileupload">
 
 </div>
 
@@ -350,7 +350,7 @@
 <div class="form-group">
     <div class="col-sm-1"> </div>
     <div class="col-sm-5">
-      <button type="submit" class="btn btn-primary" id="btn">บันทึก
+      <button type="submit" name="submit" value="Upload" class="btn btn-primary" id="btn">บันทึก
       </button>
     </div>
   </div>

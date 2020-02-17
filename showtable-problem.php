@@ -33,7 +33,7 @@
                   <tbody>
                     <tr>
                                         <td><?php echo $ID_problem ?></td>
-                                        <td><a href="show-problem.php?GetID=<?php echo $ID_problem ?>"><?php echo $name_problem ?></a></td>
+                                        <td><a href="show-problem.php?GetID=<?php echo $ID_problem ?>"  class="view_deta1"><?php echo $name_problem ?></a></td>
                                         <td><?php echo $name_las ?></td>
                                         <td><?php echo $mobilephone ?></td>
                                         <td><?php echo $name ?></td>
@@ -54,3 +54,22 @@
           </div>
 
         </div>
+        <html>
+        <script src="dist/js/sb-admin-2.js"></script>
+    <script>
+     $(document).ready(function(){
+       $('.view_data1').click(function(){
+         var uid=$(this).attr("id");
+         $.ajax({
+           url:"view_details-Booking.php",
+           method :"post",
+           data:{id:uid},
+           success:function(data){
+             $('#detail').html(data);
+              $('#dataModal').modal('show');
+           }
+         });
+       });
+     });
+     </script>
+        </html>
