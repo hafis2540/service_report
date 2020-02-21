@@ -7,7 +7,7 @@
   $ID_user = $_SESSION['ID_user'];
   $name_las = $_SESSION['name_las'];
   $level = $_SESSION['level'];
-  if($level!='User'){
+  if($level!='Supervisor'){
     Header("Location: ../logout.php");  
   }  
 ?>
@@ -133,108 +133,59 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <!--ส่วนตารางการแจ้งปัญหา-->
-                    <?php include('showtable-problem.php');?>
+                    <?php include("status_3.php");?>
                 </table>
               </div>
             </div>
           </div>
 
         </div>
-        <!-- /.container-fluid -->
 
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
-    </div>
-    <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- cancel Modal-->
+  <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">คุณแน่ใจหรือไม่?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">คุณต้องการยกเลิกใชหรือไม่</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">คุณแน่ใจหรือไม่ ว่าคุณต้องการออกจากระบบ</div>
+          <div class="modal-body">
+               <form action="canceltest.php" method="POST" name="add" class="form-horizontal" id="add">
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">กรุณากรอกหมายเหตุ:</label>
+                      <input type="text" name="cancel_text" class="form-control" id="cancel_text" required minlength="2"></input>
+                    </div>
+               </form>
+          </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="logout.php">Logout</a>
+
+          <a class="btn btn-primary" href="canceltest.php">Save</a>
         </div>
+          
       </div>
     </div>
   </div>
 
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
 
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-
-                          <!-- cancel Modal-->
-                            <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                              aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">คุณต้องการยกเลิกใชหรือไม่</h5>
-                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">×</span>
-                                    </button>
-                                  </div>
-                                    <div class="modal-body">
-                                         <form action="canceltest.php" method="POST" name="add" class="form-horizontal" id="add">
-                                              <div class="form-group">
-                                                <label for="message-text" class="col-form-label">กรุณากรอกหมายเหตุ:</label>
-                                                <input type="text" name="cancel_text" class="form-control" id="cancel_text" required minlength="2"></input>
-                                              </div>
-                                         </form>
-                                    </div>
-                                  <div class="modal-footer">
-                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-
-                                    <a class="btn btn-primary" href="canceltest.php">Save</a>
-                                  </div>
-                                    
-                                </div>
-                              </div>
-                            </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

@@ -216,7 +216,34 @@
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <div class="form-group">
+
+
+    <?php
+                                        // include 'connection.php';
+                                        // $sql = "Select Max(substr(ID_user,3)+1) as MaxID from tb_user WHERE level = 'User'";
+                                        // $query = mysqli_query($conn,$sql);
+                                        // $ID_table = mysqli_fetch_assoc($query);
+                                        // $testid = $ID_table['MaxID'];
+                                        //         if($testid=='')
+                                        //         {
+                                        //             $ID_user="S001";
+                                        //         }else
+                                        //         {
+                                        //             $ID_user="S".sprintf("%03d",$testid);   
+                                        //         }
+                                                    
+    ?>
+
     <form action="add-member.php" method="POST" name="add" class="form-horizontal" id="add">
+    <input type="hidden" name="ID_user" value="<?=$ID_user?>">
+    
+    <div class="col-sm-1 text-left"> </div>
+    <div class="col-sm-4 text-left">
+    <b> รหัสสมาชิก </b>
+									<input type="text" class="form-control" name="id" value="<?=$ID_user?>" disabled="disabled"/>
+                  </div>
+    </div>
+    <div class="form-group">                                           
     <div class="col-sm-1 text-left"> </div>
     <div class="col-sm-4 text-left">
       <b> ชื่อ - นามสกุล </b>

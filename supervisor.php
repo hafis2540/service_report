@@ -30,6 +30,10 @@
 
   <title>SupervisorPage</title>
 
+  <!-- plugin ajax -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>    
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -243,7 +247,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Supervisor</h1>
-            <a href="add_problem.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> เพิ่มข้อมูลสมาชิก </a>
+            <a href="reportproblem.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> แจ้งงาน </a>
           </div>
           
           <div class="card shadow mb-4">
@@ -255,7 +259,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <!--ส่วนตารางการแจ้งปัญหา-->
-                    <?php include('show-editproblem.php');?>
+                    <?php include('super_showtable_problem.php');?>
                 </table>
               </div>
             </div>

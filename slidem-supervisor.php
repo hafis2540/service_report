@@ -33,32 +33,15 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="table.php">ปัญหาทั้งหมด</a>
-            <a class="collapse-item" href="project.php">รอการดำเนินการ</a>
-            <a class="collapse-item" href="project.php">กำลังดำเนินการ</a>
-            <a class="collapse-item" href="project.php">ดำเนินการเรียบร้อย</a>
+            <a class="collapse-item" href="supervisor.php">ปัญหาทั้งหมด</a>
+            <a class="collapse-item" href="status_1.php">รอการดำเนินการ</a>
+            <a class="collapse-item" href="showtable_status_2.php">กำลังดำเนินการ</a>
+            <a class="collapse-item" href="showtable_status_3.php">ดำเนินการเรียบร้อย</a>
           </div>
         </div>
       </li>
       
-      <hr class="sidebar-divider d-none d-md-block">
-      <div class="sidebar-heading">
-        <h6 align="center">โครงการ</h6>
-      </div>
-
-      <!-- ส่วนของ Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-          aria-controls="collapsePages">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>โครงการ</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="project.php">โครงการทั้งหมด</a>
-          </div>
-        </div>
-      </li>
+      
       <!-- Nav Item - Utilities Collapse Menu -->
 
 

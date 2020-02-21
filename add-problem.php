@@ -33,8 +33,8 @@ move_uploaded_file($_FILES['fileupload']['tmp_name'],$path_copy);
 
 
 
-$sql = "INSERT INTO tb_problem (name_problem, job_date, job_proceed, status, equipment, code_equipment, ID_project, ID_type, ID_user, ID_location, station,uploaded_on ,fileupload) 
-		    VALUES ('".$_POST["name_problem"]."', '".$_POST["job_date"]."', '".$_POST["job_proceed"]."', '".$_POST["status"]."', '".$_POST["equipment"]."', '".$_POST["code_equipment"]."', '".$_POST["ID_project"]."', '".$_POST["ID_type"]."', '".$_POST["ID_user"]."', '".$_POST["ID_location"]."', '".$_POST["station"]."','".$date."', '$newname')";
+$sql = "INSERT INTO tb_problem (name_problem, job_date, job_proceed, ID_status, equipment, code_equipment, ID_project, ID_type, ID_user, ID_location, station,uploaded_on ,fileupload) 
+		    VALUES ('".$_POST["name_problem"]."', '".$_POST["job_date"]."', '".$_POST["job_proceed"]."', '".$_POST["ID_status"]."', '".$_POST["equipment"]."', '".$_POST["code_equipment"]."', '".$_POST["ID_project"]."', '".$_POST["ID_type"]."', '".$_POST["ID_user"]."', '".$_POST["ID_location"]."', '".$_POST["station"]."','".$date."', '$newname')";
 		
 		$result = mysqli_query($con, $sql) or die (mysqli_error($con) . "<br>$sql");
 			

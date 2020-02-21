@@ -11,56 +11,31 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="supervisor.php">
+   <span class="nav-item">
+        <a class="nav-link" href="admin.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>หน้าแรก</span></a>
-      </li>
+      </span>
+      
       <!-- Divider -->
       <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        <h6 align="center">รายการปัญหา</h6>
+        <h6 align="center">เมนู</h6>
       </div>
 
       <!-- ส่วนของ Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>รายการปัญหาที่แจ้ง</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="table.php">ปัญหาทั้งหมด</a>
-            <a class="collapse-item" href="project.php">รอการดำเนินการ</a>
-            <a class="collapse-item" href="project.php">กำลังดำเนินการ</a>
-            <a class="collapse-item" href="project.php">ดำเนินการเรียบร้อย</a>
-          </div>
-        </div>
+        <a class="nav-link" href="new_job.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>ตารางงานใหม่</span></a>
       </li>
-      
-      <hr class="sidebar-divider d-none d-md-block">
-      <div class="sidebar-heading">
-        <h6 align="center">โครงการ</h6>
-      </div>
-
-      <!-- ส่วนของ Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-          aria-controls="collapsePages">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>โครงการ</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="project.php">โครงการทั้งหมด</a>
-          </div>
-        </div>
+        <a class="nav-link" href="job.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>ตารางงาน</span></a>
       </li>
-      <!-- Nav Item - Utilities Collapse Menu -->
-
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

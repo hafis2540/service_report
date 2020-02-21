@@ -11,56 +11,71 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
+      <span class="nav-item">
         <a class="nav-link" href="admin.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>หน้าแรก</span></a>
-      </li>
+      </span>
+      
       <!-- Divider -->
       <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        <h6 align="center">สมาชิก</h6>
+        <h6 align="center">เมนู</h6>
       </div>
 
       <!-- ส่วนของ Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>สมาชิก</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <a class="nav-link" href="table.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>สมาชิก</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="project.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>โครงการทั้งหมด</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="type.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>ประเภทงาน</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="location.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>สถานที่</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="station.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>สถานี</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="admin.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>5555</span></a>
+      </li>
+        <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="table.php">สมาชิกทั้งหมด</a>
-          </div>
-        </div>
-      </li>
-      
-      <hr class="sidebar-divider d-none d-md-block">
-      <div class="sidebar-heading">
-        <h6 align="center">โครงการ</h6>
-      </div>
-
-      <!-- ส่วนของ Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-          aria-controls="collapsePages">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>โครงการ</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="project.php">โครงการทั้งหมด</a>
+            <a class="collapse-item" href="project.php">ประเภทงาน</a>
+            <a class="collapse-item" href="project.php">สถานที่</a>
+            <a class="collapse-item" href="project.php">สถานี</a>
+            <a class="collapse-item" href="project.php">สถานะ</a>
           </div>
-        </div>
-      </li>
-      <!-- Nav Item - Utilities Collapse Menu -->
+         
+        </div> -->
+      </span>
+      
+      
+      <!-- ส่วนของ Menu -->
+       <!-- Nav Item - Utilities Collapse Menu -->
 
 
       <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+      <!-- <hr class="sidebar-divider d-none d-md-block"> -->
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">

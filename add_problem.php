@@ -10,9 +10,6 @@
   if($level!='User'){
     Header("Location: ../logout.php");  
   }  
-
-
-          
 ?>
 
 
@@ -280,7 +277,7 @@
 
     <div class="col-sm-4 text-left">
       
-      <input  name="status" value="รอการตรวจสอบ" type="hidden" required class="form-control"  placeholder=""    minlength="2" />
+      <input  name="ID_status" value="1" type="hidden" required class="form-control"  placeholder=""    minlength="2" />
     </div>
 
             
